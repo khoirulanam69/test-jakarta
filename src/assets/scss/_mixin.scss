@@ -1,0 +1,42 @@
+@mixin display($justify: start, $align: start, $direction: row) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+@mixin position(
+  $position: absolute,
+  $top: auto,
+  $bottom: auto,
+  $left: auto,
+  $right: auto
+) {
+  position: $position;
+  top: $top;
+  bottom: $bottom;
+  left: $left;
+  right: $right;
+}
+
+@mixin border-radius {
+  padding: 15px 25px;
+  border-radius: 12px;
+  border: 1px solid #dfe1e6;
+}
+
+@mixin circle($width, $color: #e66e3b) {
+  display: inline-block;
+  width: $width;
+  height: $width;
+  border-radius: 50%;
+  background-color: $color;
+}
+
+@mixin bar-chart($width, $height, $color) {
+  width: $width;
+  height: $height;
+  display: block;
+  border-radius: 71.5px;
+  background-color: $color;
+}

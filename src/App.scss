@@ -1,0 +1,254 @@
+@import "./assets/scss/mixin";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+@use "sass:math";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #fafbfc;
+}
+
+.container {
+  padding: 40px 40px;
+}
+
+.chart-wrapper {
+  @include display($justify: space-between);
+  margin: 40px 0;
+  .chart-box {
+    @include border-radius();
+    width: 400px;
+    height: 220px;
+    background-color: #fff;
+    .chart-contain {
+      @include display($direction: column);
+      height: 85%;
+      position: relative;
+      li {
+        list-style: none;
+      }
+      .months {
+        height: 150px;
+        @include display($direction: column, $justify: space-between);
+      }
+
+      // horizontal
+      .horizontal-bars {
+        @include position($position: absolute, $top: 0, $right: 0);
+        @include display($justify: space-between, $direction: column);
+        width: 300px;
+        height: 145px;
+        li {
+          @include bar-chart(100%, 12px, #f7e8e5);
+          margin-top: 5px;
+          span {
+            @include bar-chart(3%, 12px, #e66e3b);
+            transition: 1.5s;
+          }
+        }
+      }
+      .days {
+        @include display($direction: row, $justify: space-between);
+        align-self: flex-end;
+        width: 300px;
+        margin-top: 20px;
+      }
+
+      // vertical
+      .vertical-bars {
+        @include position($position: absolute, $bottom: 40px, $left: 0);
+        @include display($justify: space-between);
+        transform: rotate(180deg);
+        height: 160px;
+        width: 100%;
+        .bar1 {
+          @include bar-chart(18px, 10%, #c2d9d7);
+          transition: 1.5s;
+        }
+        .bar2 {
+          @include bar-chart(18px, 10%, #315858);
+          transition: 1.5s;
+        }
+      }
+      .number-text {
+        @include position($bottom: 0);
+        @include display($justify: space-between);
+        width: 140px;
+        li {
+          &:nth-child(1) span {
+            @include circle(10px, #c2d9d7);
+          }
+          &:nth-child(2) span {
+            @include circle(10px, #315858);
+          }
+        }
+        label {
+          margin-left: 5px;
+        }
+      }
+
+      // circular
+      .circular-bar {
+        @include display($justify: center, $align: center, $direction: column);
+        width: 200px;
+        .percent {
+          @include position($bottom: 20px, $left: 0);
+          width: 160px;
+          height: 160px;
+          svg {
+            @include position(relative);
+            width: 160px;
+            height: 160px;
+            transform: rotateZ(-90deg);
+            circle {
+              width: 160px;
+              height: 160px;
+              fill: none;
+              stroke-width: 20;
+              stroke-dasharray: 440;
+              stroke-dashoffset: 440;
+              stroke-linecap: round;
+              transform: translate(10px, 10px);
+              transition: 1.5s;
+              &:nth-child(1) {
+                stroke: #e66e3b;
+              }
+              &:nth-child(2) {
+                stroke-dashoffset: 440;
+                stroke: #f7e8e5;
+              }
+            }
+          }
+          .number {
+            @include position($top: 0, $left: 0);
+            @include display($justify: center, $align: center);
+            width: 100%;
+            height: 100%;
+            color: #e66e3b;
+          }
+        }
+      }
+      .circular-text {
+        @include position($right: 30px, $top: 30px);
+        span {
+          &:nth-child(1) {
+            @include circle(10px);
+          }
+          &:nth-child(5) {
+            @include circle(10px, #f7e8e5);
+          }
+        }
+        label {
+          margin-left: 5px;
+        }
+        p {
+          font-weight: 400;
+          color: #566376;
+          margin-left: 18px;
+        }
+      }
+    }
+  }
+}
+
+// Table
+.check-list {
+  .table {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 2fr 2fr;
+    span {
+      @include display($align: center);
+    }
+  }
+  input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+  }
+  label::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #b0b7c3;
+    border-radius: 3px;
+  }
+  input[type="checkbox"]:checked + label::before {
+    content: "\002714";
+    color: white;
+    font-size: 8px;
+    background-color: #315858;
+    border: 1px solid #315858;
+  }
+  .table-header {
+    padding: 15px 25px;
+  }
+  .table-body {
+    @include border-radius();
+    margin-bottom: 15px;
+    background-color: #fff;
+  }
+  .modal-body {
+    @include position($position: fixed, $bottom: 40px, $left: 50%);
+    @include display($justify: space-between, $align: center);
+    @include border-radius();
+    background-color: #fff;
+    width: 500px;
+    padding: 15px 30px;
+    opacity: 0;
+    transform: translate(-50%, 100%);
+    transition: 0.5s;
+    button {
+      @include border-radius();
+      color: #fff;
+      padding: 8px 12px;
+      &:nth-child(1) {
+        background-color: #3f6c6b;
+        margin-right: 12px;
+      }
+      &:nth-child(2) {
+        background-color: #ee5c5c;
+      }
+    }
+  }
+}
+
+.offline-wrapper {
+  @include position($top: 0, $left: 0, $bottom: 0, $right: 0);
+  @include display($justify: center, $align: center);
+  background-color: rgba(72, 72, 129, 0.3);
+  .offline {
+    @include position(relative);
+    @include border-radius();
+    @include display($align: center, $direction: column);
+    width: 460px;
+    background-color: #fff;
+    img {
+      margin-top: 20px;
+    }
+    h2 {
+      margin: 10px 0;
+    }
+    p {
+      &:last-child {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+.cookie {
+  @include position(fixed, $top: 0, $left: 0, $right: 0);
+  @include display($align: center);
+  padding-left: 40px;
+  height: 50px;
+  background-color: #ecedf1;
+  span {
+    margin: 0 5px;
+  }
+}

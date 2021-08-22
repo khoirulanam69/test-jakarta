@@ -1,0 +1,549 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@use "sass:math";
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #fafbfc;
+}
+
+.container {
+  padding: 40px 40px;
+}
+
+.chart-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 40px 0;
+}
+
+.chart-wrapper .chart-box {
+  padding: 15px 25px;
+  border-radius: 12px;
+  border: 1px solid #dfe1e6;
+  width: 400px;
+  height: 220px;
+  background-color: #fff;
+}
+
+.chart-wrapper .chart-box .chart-contain {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 85%;
+  position: relative;
+}
+
+.chart-wrapper .chart-box .chart-contain li {
+  list-style: none;
+}
+
+.chart-wrapper .chart-box .chart-contain .months {
+  height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.chart-wrapper .chart-box .chart-contain .horizontal-bars {
+  position: absolute;
+  top: 0;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 300px;
+  height: 145px;
+}
+
+.chart-wrapper .chart-box .chart-contain .horizontal-bars li {
+  width: 100%;
+  height: 12px;
+  display: block;
+  border-radius: 71.5px;
+  background-color: #f7e8e5;
+  margin-top: 5px;
+}
+
+.chart-wrapper .chart-box .chart-contain .horizontal-bars li span {
+  width: 3%;
+  height: 12px;
+  display: block;
+  border-radius: 71.5px;
+  background-color: #e66e3b;
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+}
+
+.chart-wrapper .chart-box .chart-contain .days {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  width: 300px;
+  margin-top: 20px;
+}
+
+.chart-wrapper .chart-box .chart-contain .vertical-bars {
+  position: absolute;
+  top: auto;
+  bottom: 40px;
+  left: 0;
+  right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  height: 160px;
+  width: 100%;
+}
+
+.chart-wrapper .chart-box .chart-contain .vertical-bars .bar1 {
+  width: 18px;
+  height: 10%;
+  display: block;
+  border-radius: 71.5px;
+  background-color: #c2d9d7;
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+}
+
+.chart-wrapper .chart-box .chart-contain .vertical-bars .bar2 {
+  width: 18px;
+  height: 10%;
+  display: block;
+  border-radius: 71.5px;
+  background-color: #315858;
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+}
+
+.chart-wrapper .chart-box .chart-contain .number-text {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: auto;
+  right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 140px;
+}
+
+.chart-wrapper .chart-box .chart-contain .number-text li:nth-child(1) span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #c2d9d7;
+}
+
+.chart-wrapper .chart-box .chart-contain .number-text li:nth-child(2) span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #315858;
+}
+
+.chart-wrapper .chart-box .chart-contain .number-text label {
+  margin-left: 5px;
+}
+
+.chart-wrapper .chart-box .chart-contain .circular-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 200px;
+}
+
+.chart-wrapper .chart-box .chart-contain .circular-bar .percent {
+  position: absolute;
+  top: auto;
+  bottom: 20px;
+  left: 0;
+  right: auto;
+  width: 160px;
+  height: 160px;
+}
+
+.chart-wrapper .chart-box .chart-contain .circular-bar .percent svg {
+  position: relative;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  width: 160px;
+  height: 160px;
+  -webkit-transform: rotateZ(-90deg);
+          transform: rotateZ(-90deg);
+}
+
+.chart-wrapper .chart-box .chart-contain .circular-bar .percent svg circle {
+  width: 160px;
+  height: 160px;
+  fill: none;
+  stroke-width: 20;
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  stroke-linecap: round;
+  -webkit-transform: translate(10px, 10px);
+          transform: translate(10px, 10px);
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+}
+
+.chart-wrapper .chart-box .chart-contain .circular-bar .percent svg circle:nth-child(1) {
+  stroke: #e66e3b;
+}
+
+.chart-wrapper .chart-box .chart-contain .circular-bar .percent svg circle:nth-child(2) {
+  stroke-dashoffset: 440;
+  stroke: #f7e8e5;
+}
+
+.chart-wrapper .chart-box .chart-contain .circular-bar .percent .number {
+  position: absolute;
+  top: 0;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  height: 100%;
+  color: #e66e3b;
+}
+
+.chart-wrapper .chart-box .chart-contain .circular-text {
+  position: absolute;
+  top: 30px;
+  bottom: auto;
+  left: auto;
+  right: 30px;
+}
+
+.chart-wrapper .chart-box .chart-contain .circular-text span:nth-child(1) {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #e66e3b;
+}
+
+.chart-wrapper .chart-box .chart-contain .circular-text span:nth-child(5) {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #f7e8e5;
+}
+
+.chart-wrapper .chart-box .chart-contain .circular-text label {
+  margin-left: 5px;
+}
+
+.chart-wrapper .chart-box .chart-contain .circular-text p {
+  font-weight: 400;
+  color: #566376;
+  margin-left: 18px;
+}
+
+.check-list .table {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 2fr 2fr 2fr 2fr;
+      grid-template-columns: 1fr 2fr 2fr 2fr 2fr;
+}
+
+.check-list .table span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.check-list input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+}
+
+.check-list label::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #b0b7c3;
+  border-radius: 3px;
+}
+
+.check-list input[type="checkbox"]:checked + label::before {
+  content: "\002714";
+  color: white;
+  font-size: 8px;
+  background-color: #315858;
+  border: 1px solid #315858;
+}
+
+.check-list .table-header {
+  padding: 15px 25px;
+}
+
+.check-list .table-body {
+  padding: 15px 25px;
+  border-radius: 12px;
+  border: 1px solid #dfe1e6;
+  margin-bottom: 15px;
+  background-color: #fff;
+}
+
+.check-list .modal-body {
+  position: fixed;
+  top: auto;
+  bottom: 40px;
+  left: 50%;
+  right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 15px 25px;
+  border-radius: 12px;
+  border: 1px solid #dfe1e6;
+  background-color: #fff;
+  width: 500px;
+  padding: 15px 30px;
+  opacity: 0;
+  -webkit-transform: translate(-50%, 100%);
+          transform: translate(-50%, 100%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.check-list .modal-body button {
+  padding: 15px 25px;
+  border-radius: 12px;
+  border: 1px solid #dfe1e6;
+  color: #fff;
+  padding: 8px 12px;
+}
+
+.check-list .modal-body button:nth-child(1) {
+  background-color: #3f6c6b;
+  margin-right: 12px;
+}
+
+.check-list .modal-body button:nth-child(2) {
+  background-color: #ee5c5c;
+}
+
+.offline-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: rgba(72, 72, 129, 0.3);
+}
+
+.offline-wrapper .offline {
+  position: relative;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  padding: 15px 25px;
+  border-radius: 12px;
+  border: 1px solid #dfe1e6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 460px;
+  background-color: #fff;
+}
+
+.offline-wrapper .offline img {
+  margin-top: 20px;
+}
+
+.offline-wrapper .offline h2 {
+  margin: 10px 0;
+}
+
+.offline-wrapper .offline p:last-child {
+  margin-bottom: 20px;
+}
+
+.cookie {
+  position: fixed;
+  top: 0;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-left: 40px;
+  height: 50px;
+  background-color: #ecedf1;
+}
+
+.cookie span {
+  margin: 0 5px;
+}
+/*# sourceMappingURL=App.css.map */
